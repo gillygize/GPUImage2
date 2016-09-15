@@ -51,7 +51,7 @@ public class PictureOutput: ImageConsumer {
         renderFramebuffer.unlock()
         let dataProvider = CGDataProviderCreateWithData(nil, data, imageByteSize, dataProviderReleaseCallback)
         let defaultRGBColorSpace = CGColorSpaceCreateDeviceRGB()
-        return CGImageCreate(Int(framebuffer.size.width), Int(framebuffer.size.height), 8, 32, 4 * Int(framebuffer.size.width), defaultRGBColorSpace, .ByteOrderDefault /*| CGImageAlphaInfo.Last*/, dataProvider, nil, false, .RenderingIntentDefault)!
+        return CGImageCreate(Int(framebuffer.size.width), Int(framebuffer.size.height), 8, 32, 4 * Int(framebuffer.size.width), defaultRGBColorSpace, .ByteOrderDefault /*| CGImageAlphaInfo.Last*/, dataProvider!, nil, false, .RenderingIntentDefault)!
     }
     
     public func newFramebufferAvailable(framebuffer:Framebuffer, fromSourceIndex:UInt) {

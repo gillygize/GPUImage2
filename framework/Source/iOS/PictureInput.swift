@@ -83,10 +83,10 @@ public class PictureInput: ImageSource {
             
             let imageContext = CGBitmapContextCreate(imageData, Int(widthToUseForTexture), Int(heightToUseForTexture), 8, Int(widthToUseForTexture) * 4, genericRGBColorspace,  CGImageAlphaInfo.PremultipliedFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue)
             //        CGContextSetBlendMode(imageContext, kCGBlendModeCopy); // From Technical Q&A QA1708: http://developer.apple.com/library/ios/#qa/qa1708/_index.html
-            CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, CGFloat(widthToUseForTexture), CGFloat(heightToUseForTexture)), image)
+            CGContextDrawImage(imageContext!, CGRectMake(0.0, 0.0, CGFloat(widthToUseForTexture), CGFloat(heightToUseForTexture)), image)
         } else {
             // Access the raw image bytes directly
-            dataFromImageDataProvider = CGDataProviderCopyData(CGImageGetDataProvider(image))
+            dataFromImageDataProvider = CGDataProviderCopyData(CGImageGetDataProvider(image)!)
             imageData = UnsafeMutablePointer<GLubyte>(CFDataGetBytePtr(dataFromImageDataProvider))
         }
         
